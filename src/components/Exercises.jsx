@@ -1,7 +1,82 @@
-import React from "react";
+// import React, { useEffect, useState } from "react";
+// import Pagination from "@mui/material/Pagination";
+// import { Box, Stack, Typography } from "@mui/material";
+// // import { exerciseOptions, fetchData } from "../utils/fetchData";
+// import ExerciseCard from "./ExerciseCard";
 
-const Exercises = () => {
-  return <div>Exercises</div>;
+// const Exercises = ({ exercises, setExercises, bodyPart }) => {
+//   console.log(exercises);
+//   return (
+//     <Box id="exercises" sx={{ mt: { lg: "110px" } }} mt="50px" p="20px">
+//       <Typography variant="h3" mb="46px">
+//         Showing Results
+//       </Typography>
+//       <Stack
+//         direction="row"
+//         sx={{ gap: { lg: "110px", xs: "50px" } }}
+//         flexWrap="wrap"
+//         justifyContent="center"
+//       >
+//         {exercises.map((exercise, index) => (
+//           <ExerciseCard key={index} exercise={exercise} />
+//         ))}
+//       </Stack>
+//       <Stack mt="100px" alignItems="center">
+//         {exercises.length > 9 && <Pagination color="standart" />}
+//       </Stack>
+//     </Box>
+//   );
+// };
+
+// export default Exercises;
+
+import React, { useEffect, useState } from "react";
+import ReactPaginate from "react-paginate";
+import { Box, Stack, Typography } from "@mui/material";
+import ExerciseCard from "./ExerciseCard";
+
+const Exercises = ({ exercises, setExercises, bodyPart }) => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const perPage = 9;
+
+  const handlePageChange = ({ selected }) => {
+    setCurrentPage(selected);
+  };
+
+  const displayedExercises = exercises.slice(
+    currentPage * perPage,
+    (currentPage + 1) * perPage
+  );
+
+  return (
+    <Box id="exercises" sx={{ mt: { lg: "110px" } }} mt="50px" p="20px">
+      <Typography variant="h3" mb="46px">
+        Showing Results
+      </Typography>
+      <Stack
+        direction="row"
+        sx={{ gap: { lg: "110px", xs: "50px" } }}
+        flexWrap="wrap"
+        justifyContent="center"
+      >
+        {displayedExercises.map((exercise, index) => (
+          <ExerciseCard key={index} exercise={exercise} />
+        ))}
+      </Stack>
+      {exercises.length > perPage && (
+        <Stack mt="100px" alignItems="center">
+          <ReactPaginate
+            pageCount={Math.ceil(exercises.length / perPage)}
+            pageRangeDisplayed={3}
+            marginPagesDisplayed={1}
+            onPageChange={handlePageChange}
+            containerClassName="pagination"
+            activeClassName="active"
+          />
+        </Stack>
+      )}
+    </Box>
+  );
 };
 
 export default Exercises;

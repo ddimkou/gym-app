@@ -6,9 +6,10 @@ import HorizontalScrollbar from "./HorizontalScrollbar";
 
 const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
   const [search, setSearch] = useState("");
-  // const [exercises, setExercises] = useState([]);
+
   const [bodyParts, setBodyParts] = useState([]);
 
+  // fetch body parts so to display the list of body parts to exercise(above the search result)
   useEffect(() => {
     const fetchExercisesData = async () => {
       const bodyPartsData = await fetchData(
@@ -20,6 +21,7 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
     fetchExercisesData();
   }, []);
 
+  // search handle fetch
   const handleSearch = async () => {
     if (search) {
       const exercisesData = await fetchData(
