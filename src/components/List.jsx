@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import BodyPart from "./BodyPart";
 
-const HorizontalScrollbar = ({ data, bodyPart, setBodyPart }) => {
+const List = ({ data, bodyPart, setBodyPart }) => {
   return (
     <Grid container spacing={2} justifyContent="center">
       {data.map((item) => (
@@ -25,4 +25,4 @@ const HorizontalScrollbar = ({ data, bodyPart, setBodyPart }) => {
   );
 };
 
-export default HorizontalScrollbar;
+export default List;
