@@ -1,4 +1,9 @@
-This project is a React app that allows users to explore and watch videos about exercises with body part, target muscle, and a form and follow-through animation.
+# **This is a follow up tutorial of Javascript Mastery:**
+* https://www.youtube.com/watch?v=dyFVwXROzZk&t=8413s&ab_channel=JavaScriptMastery  2nd project
+* https://www.jsmastery.pro/
+* https://github.com/adrianhajdin
+
+This project is a eact app that allows users to explore and watch videos about exercises with body part, target muscle, and a form and follow-through animation.
 With ExerciseDB API with over than 1300 animated exercises you can navigate and follow up with your needs.
 It utilizes the YouTube Data API to fetch video data and display according the specific exercise.
 
